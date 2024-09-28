@@ -1,14 +1,9 @@
-import { ContactList } from "./components/ContactList"
-import { ContactForm } from "./components/contactForm"
+import { ContactApp } from "./ContactApp"
+
 
 function App() {
- 
-
   return (
-   <div className="pl-8">
-    <ContactForm />
-    <ContactList />
-   </div>
+    <ContactApp />
   )
 }
 
