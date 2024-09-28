@@ -5,7 +5,7 @@ function App() {
  
 
   return (
-   <div>
+   <div className="pl-8">
     <ContactForm />
     <ContactList />
    </div>

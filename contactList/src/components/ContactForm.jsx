@@ -11,7 +11,7 @@ const Input = ({ text, className }) => {
 
 export const ContactForm = () => {
   return (
-    <form className="container flex flex-col justify-center items-start pt-4 pl-4">
+    <form className="container flex flex-col justify-center items-start pt-4 ">
       <div className="w-full">
         <Input type="text" text="Search..." className="w-2/5" />
       </div>
@@ -22,7 +22,7 @@ export const ContactForm = () => {
         <Input type="email" text="Email" />
         <button
           type="submit"
-          className="bg-blue-600 p-2 pl-4 pr-4 rounded-md text-white font-bold transition-colors hover:bg-blue-700"
+          className="bg-blue-600 p-2 pr-4 rounded-md text-white font-bold transition-colors hover:bg-blue-700"
         >
           + Add
         </button>
