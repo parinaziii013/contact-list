@@ -1,3 +1,4 @@
+import { ContactList } from "./components/ContactList"
 import { ContactForm } from "./components/contactForm"
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
    <div>
     <ContactForm />
+    <ContactList />
    </div>
   )
 }
