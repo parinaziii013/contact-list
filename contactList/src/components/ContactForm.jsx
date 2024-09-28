@@ -11,23 +11,22 @@ const Input = ({ text, className }) => {
 
 export const ContactForm = () => {
   return (
-  
-        <div className="container flex flex-col justify-center items-start">
+    <form className="container flex flex-col justify-center items-start pt-4 pl-4">
       <div className="w-full">
-      <Input type="text" text="Search..." className="w-2/5" />
+        <Input type="text" text="Search..." className="w-2/5" />
       </div>
 
-    <div className="flex mt-2">
-      <Input type="text" text="Name" />
-      <Input type="tel" text="Phone" />
-      <Input type="email" text="Email" />
-      <button
-        type="submit"
-        className="bg-blue-600 p-2 pl-4 pr-4 rounded-md text-white font-bold transition-colors hover:bg-blue-700"
-      >
-        + Add
-      </button>
-    </div>
-  </div>
+      <div className="flex mt-2">
+        <Input type="text" text="Name" />
+        <Input type="tel" text="Phone" />
+        <Input type="email" text="Email" />
+        <button
+          type="submit"
+          className="bg-blue-600 p-2 pl-4 pr-4 rounded-md text-white font-bold transition-colors hover:bg-blue-700"
+        >
+          + Add
+        </button>
+      </div>
+    </form>
   );
 };
