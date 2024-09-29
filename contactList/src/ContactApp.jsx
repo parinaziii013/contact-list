@@ -2,13 +2,23 @@ import { useState } from "react";
 import { ContactList } from "./components/ContactList";
 import { ContactForm } from "./components/contactForm";
 
-export const ContactApp = () =>{
+let counter = 0;
 
-  
-    return (
-     <div className="pl-8">
-        <ContactForm />
-        <ContactList />
-     </div>
-    )
-}
+export const ContactApp = () => {
+  const [list, setList] = useState([]);
+  const handleItems = (name, phone, email) => {
+    const newContactItem = {
+      id: counter++,
+      name,
+      phone,
+      email,
+    };
+    setList([...list, newContactItem]);
+  };
+  return (
+    <div className="pl-8">
+      <ContactForm onAddContact={handleItems}/>
+      <ContactList contactItems={list} />
+    </div>
+  );
+};

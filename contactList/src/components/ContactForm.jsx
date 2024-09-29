@@ -1,52 +1,62 @@
 import { useState } from "react";
 
-const Input = ({ text, className, onChange }) => {
-  const [value, setValue] = useState("");
-
+const Input = ({ text, className, onChangeValue, val }) => {
   const handleChange = ({ target }) => {
-    setValue(target.value);
-    onChange(target.value);
+    onChangeValue(target.value);
   };
 
   return (
-    <div>
       <input
-        value={value}
+      value={val}
         onChange={handleChange}
         placeholder={text}
         className={`border-solid border rounded-md mr-1 p-2 outline-none ${className}`}
       />
-    </div>
   );
 };
 
-export const ContactForm = () => {
+export const ContactForm = ({ onAddContact }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddContact(name, phone, email);
+    setName("");
+    setPhone("");
+    setEmail("");
+  };
+
   const handleName = (value) => {
     setName(value);
+    // console.log(value);
   };
+
   const handlePhone = (value) => {
-    setName(value);
-    console.log(value);
+    setPhone(value);
+    // console.log(value);
   };
+
   const handleEmail = (value) => {
-    setName(value);
-    console.log(value);
+    setEmail(value);
   };
+
   return (
-    <form className="container flex flex-col justify-center items-start pt-4 ">
+    <form
+      onSubmit={handleSubmit}
+      className="container flex flex-col justify-center items-start pt-4 "
+    >
       <div className="w-full">
         <Input type="text" text="Search..." className="w-2/5" />
       </div>
 
       <div className="flex mt-2">
-        <Input type="text" text="Name" onChange={handleName} />
+        <Input type="text" val={name} text="Name" onChangeValue={handleName} />
 
-        <Input type="tel" text="Phone" onChange={handlePhone} />
+        <Input type="tel" val={phone} text="Phone" onChangeValue={handlePhone} />
 
-        <Input type="email" text="Email" onChange={handleEmail} />
+        <Input type="email" val={email} text="Email" onChangeValue={handleEmail} />
         <button
           type="submit"
           className="bg-blue-600 p-2 pr-4 rounded-md text-white font-bold transition-colors hover:bg-blue-700"
