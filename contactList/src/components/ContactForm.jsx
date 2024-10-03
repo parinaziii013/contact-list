@@ -19,7 +19,7 @@ export const ContactForm = ({ onAddContact, onSearch }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  // const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,19 +41,20 @@ export const ContactForm = ({ onAddContact, onSearch }) => {
     setEmail(value);
   };
 
-  const handleSearch = ({ target }) => {
-    onSearch(target.value);
+  const handleSearch = (value) => {
+    setSearch(value);
+    onSearch(value);
   };
 
   return (
     <div>
-      <input
+      <Input
         type="search"
-        placeholder="Search..."
-        className="w-2/5 border-solid border rounded-md mr-1 p-2 outline-none"
-        onChange={handleSearch}
+        val={search}
+        className="w-2/5"
+        text="Search..."
+        onChangeValue={handleSearch}
       />
-
       <form
         onSubmit={handleSubmit}
         className="container flex flex-col justify-center items-start pt-4 "
@@ -90,3 +91,7 @@ export const ContactForm = ({ onAddContact, onSearch }) => {
     </div>
   );
 };
+/**
+ * In Input Component, we use value, because in this way, every time we add a new contact,
+ we can empty all of previous inputs.
+ */
