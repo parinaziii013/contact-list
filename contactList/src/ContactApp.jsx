@@ -6,6 +6,8 @@ let counter = 0;
 
 export const ContactApp = () => {
   const [list, setList] = useState([]);
+  const [search, setSearch] = useState("");
+
   const handleItems = (name, phone, email) => {
     const newContactItem = {
       id: counter++,
@@ -15,10 +17,18 @@ export const ContactApp = () => {
     };
     setList([...list, newContactItem]);
   };
+  const handleSearchItems = (value) => {
+    setSearch(value);
+  };
+
+  const filterContacts = list.filter((contact) =>
+    contact.name.includes(search)
+  );
+
   return (
-    <div className="pl-8">
-      <ContactForm onAddContact={handleItems}/>
-      <ContactList contactItems={list} />
+    <div className="p-8">
+      <ContactForm onAddContact={handleItems} onSearch={handleSearchItems} />
+      <ContactList contactItems={filterContacts} />
     </div>
   );
 };

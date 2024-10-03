@@ -6,19 +6,20 @@ const Input = ({ text, className, onChangeValue, val }) => {
   };
 
   return (
-      <input
+    <input
       value={val}
-        onChange={handleChange}
-        placeholder={text}
-        className={`border-solid border rounded-md mr-1 p-2 outline-none ${className}`}
-      />
+      onChange={handleChange}
+      placeholder={text}
+      className={`border-solid border rounded-md mr-1 p-2 outline-none ${className}`}
+    />
   );
 };
 
-export const ContactForm = ({ onAddContact }) => {
+export const ContactForm = ({ onAddContact, onSearch }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  // const [search, setSearch] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,40 +31,62 @@ export const ContactForm = ({ onAddContact }) => {
 
   const handleName = (value) => {
     setName(value);
-    // console.log(value);
   };
 
   const handlePhone = (value) => {
     setPhone(value);
-    // console.log(value);
   };
 
   const handleEmail = (value) => {
     setEmail(value);
   };
 
+  const handleSearch = ({ target }) => {
+    onSearch(target.value);
+  };
+
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="container flex flex-col justify-center items-start pt-4 "
-    >
-      <div className="w-full">
-        <Input type="text" text="Search..." className="w-2/5" />
-      </div>
+    <div>
+      <input
+        type="search"
+        placeholder="Search..."
+        className="w-2/5 border-solid border rounded-md mr-1 p-2 outline-none"
+        onChange={handleSearch}
+      />
 
-      <div className="flex mt-2">
-        <Input type="text" val={name} text="Name" onChangeValue={handleName} />
+      <form
+        onSubmit={handleSubmit}
+        className="container flex flex-col justify-center items-start pt-4 "
+      >
+        <div className="flex mt-2">
+          <Input
+            type="text"
+            val={name}
+            text="Name"
+            onChangeValue={handleName}
+          />
 
-        <Input type="tel" val={phone} text="Phone" onChangeValue={handlePhone} />
+          <Input
+            type="tel"
+            val={phone}
+            text="Phone"
+            onChangeValue={handlePhone}
+          />
 
-        <Input type="email" val={email} text="Email" onChangeValue={handleEmail} />
-        <button
-          type="submit"
-          className="bg-blue-600 p-2 pr-4 rounded-md text-white font-bold transition-colors hover:bg-blue-700"
-        >
-          + Add
-        </button>
-      </div>
-    </form>
+          <Input
+            type="email"
+            val={email}
+            text="Email"
+            onChangeValue={handleEmail}
+          />
+          <button
+            type="submit"
+            className="bg-blue-600 p-2 pr-4 rounded-md text-white font-bold transition-colors hover:bg-blue-700"
+          >
+            + Add
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };

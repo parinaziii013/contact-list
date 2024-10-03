@@ -21,9 +21,9 @@ export const ContactList = ({ contactItems }) => {
       </div>
 
       <div>
-      {contactItems.map(({ id, name, phone, email }) => (
-        <ContactItem key={id} name={name} phone={phone} email={email} />
-      ))}
+        {contactItems.map(({ id, name, phone, email }) => (
+          <ContactItem key={id} name={name} phone={phone} email={email} />
+        ))}
       </div>
     </div>
   );
